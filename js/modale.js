@@ -1,39 +1,51 @@
 import { getData } from "./store.js";
 
-let data = await getData();
+const data = await getData();
 
-let container = document.getElementById("movies-container");
+const container = document.getElementById("movies-container");
+const info = document.getElementById("info-container");
+const closeBtn = document.getElementById("close-modal");
+const modale = document.getElementById("modal");
 
-for (let i = 0; i < data.length; i++) {
-
-    container.innerHTML += `
-        <div class="bg-gray-900 rounded-xl overflow-hidden shadow-lg">
-
-            <img
-                src="${data[i].image}"
-                alt="${data[i].title}"
-                class="w-full h-64 object-cover"
-            >
-
-            <div class="p-4 text-white">
-
-                <h2 class="text-lg font-bold">
-                    ${data[i].title}
-                </h2>
-
-                <p class="text-gray-400 mt-2">
-                    ${data[i].releaseYear}
-                </p>
-
-                <span class="inline-block mt-2 bg-red-600 px-3 py-1 rounded-lg text-sm">
-                    ${data[i].type}
-                </span>
-
-            </div>
-
-        </div>
-    `;
+function openModal() {
+    modale.classList.remove("hidden");
+    modale.classList.add("flex");
 }
 
+function closeModal() {
+    modale.classList.add("hidden");
+    modale.classList.remove("flex");
+}
 
+container.addEventListener("click", e => {
+    const card = e.target.closest(".movie-card");
+    if (!card) return;
 
+    const film = data.find(f => String(f.id) === card.dataset.id);
+    if (!film) return;
+
+    const extraInfo = film.type === "movie"
+        ? `<p>Duration: ${film.duration} min</p>`
+        : `<p>Seasons: ${film.seasons.length}</p>`;
+
+    info.innerHTML = `
+        <img src="${film.image}" alt="${film.title}"
+             class="w-full h-64 object-cover rounded-lg">
+        <h3 class="text-2xl font-bold mt-4">${film.title}</h3>
+        <p>Type: ${film.type}</p>
+        <p>Release Year: ${film.releaseYear}</p>
+        ${extraInfo}
+        <p>Description: ${film.description}</p>
+        <p>Genres: ${film.genres.join(", ")}</p>
+        <p>Directors: ${film.directors.join(", ")}</p>
+        <p>Countries: ${film.productionCountries.join(", ")}</p>
+    `;
+
+    openModal();
+});
+
+closeBtn.addEventListener("click", closeModal);
+
+modale.addEventListener("click", e => {
+    if (e.target === modale) closeModal();
+});
