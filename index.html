@@ -51,77 +51,58 @@
     <!-- MAIN -->
     <main class="relative z-10 grid grid-cols-1 md:grid-cols-[85%_15%] min-h-screen">
 
-        <!-- LEFT SIDE: SEARCH + MOVIES -->
-        <section class="p-6">
+     <!-- LEFT SIDE: SEARCH + MOVIES -->
+<section class="p-6">
 
-            <!-- Search + Filter -->
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-3 mb-8">
+    <!-- Search + Filter -->
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3 mb-8">
+        <div>
+            <input type="text" id="search-film" placeholder="Ex: Game of Thrones..."
+                class="w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200">
+        </div>
 
-                <!-- Search -->
-                <div>
+        <div>
+            <select id="filter-status"
+                class="w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200">
+                <option value="all">Tous</option>
+                <option value="movie">Films</option>
+                <option value="series">Séries</option>
+            </select>
+        </div>
 
-                    <input
-                        type="text"
-                        id="search-film"
-                        placeholder="Ex: Game of Thrones..."
-                        class="w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200"
-                    >
+        <div>
+            <button type="button" id="clear-btn"
+                class="w-full rounded-lg bg-red-700 p-3 font-semibold text-white hover:bg-red-800 transition">
+                <i class="fa-solid fa-filter mr-2"></i>
+                Clear
+            </button>
+        </div>
+    </div>
 
-                </div>
+    <!-- Movies Cards -->
+    <div id="movies-container"
+        class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+    </div>
 
+    <!-- Pagination -->
+    <div id="pagination" class="flex justify-center gap-3 mt-8"></div>
 
-                <!-- Filter -->
-                <div>
+    <!-- Modal -->
+    <div id="modal"
+        class="hidden fixed inset-0 z-50 bg-black/70 items-center justify-center p-4">
 
-                    <select
-                        id="filter-status"
-                        class="w-full rounded-lg border border-gray-300 bg-white p-3 outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200">
+        <div class="bg-gray-900 text-white rounded-xl max-w-2xl w-full p-6 relative">
 
-                        <option value="all">Tous</option>
-                        <option value="movie">Films</option>
-                        <option value="series">Séries</option>
+            <button id="close-modal" type="button"
+                class="absolute top-3 right-3 text-2xl">
+                &times;
+            </button>
 
-                    </select>
+            <div id="info-container"></div>
+        </div>
+    </div>
 
-                </div>
-
-
-                <!-- Button -->
-                <div>
-
-                    <button
-                        type="button"
-                        id="filter-btn"
-                        class="w-full rounded-lg bg-red-700 p-3 font-semibold text-white hover:bg-red-800 transition">
-
-                        <i class="fa-solid fa-filter mr-2"></i>
-                        Filtrer
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- Movies Cards -->
-            <div
-                id="movies-container"
-                class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-
-                <!-- Cards generated with JavaScript -->
-
-            </div>
-
-
-            <!-- Pagination -->
-            <div
-                id="pagination"
-                class="flex justify-center gap-3 mt-8">
-
-            </div>
-
-        </section>
+</section>
 
 
 
@@ -154,5 +135,7 @@
     </main>
 <script type="module" src="js/store.js"></script>
 <script type="module" src="js/render.js"></script>
+<script type ="module" src="js/modale.js"></script>
+<script type ="module" src="js/filter.js"></script>
 </body>
 </html>

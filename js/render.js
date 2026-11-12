@@ -55,7 +55,6 @@ for (let i = 0; i < datas.length; i++) {
 
 export function renderPaginationButtons(filmData, currentPage, pageSize = defaultSize) {
   let Cbtn = document.getElementById("pagination");
-  if (!Cbtn) return;
   
   Cbtn.innerHTML = "";
   let totalPage = Math.ceil(filmData.length / pageSize);

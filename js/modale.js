@@ -6,6 +6,10 @@ const container = document.getElementById("movies-container");
 const info = document.getElementById("info-container");
 const closeBtn = document.getElementById("close-modal");
 const modale = document.getElementById("modal");
+console.log("container:", container);
+console.log("info:", info);
+console.log("closeBtn:", closeBtn);
+console.log("modale:", modale);
 
 function openModal() {
     modale.classList.remove("hidden");
