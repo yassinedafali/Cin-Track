@@ -20,3 +20,9 @@ search.addEventListener("input", () => {
     renderfilm(resultats)
 });
 
+clear.addEventListener("click",()=>{
+    search.value="";
+    filter.value="all"
+}
+
+)
