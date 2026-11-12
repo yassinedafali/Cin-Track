@@ -7,6 +7,9 @@ let container = document.getElementById("movies-container");
 let defaultPage = 1;
 let defaultSize = 8;
 
+
+
+
 export function renderfilm(filmData = data, page = defaultPage, size = defaultSize) {
   if (!filmData) return;
 
