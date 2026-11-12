@@ -110,7 +110,7 @@
                 class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
 
                 <!-- Cards generated with JavaScript -->
-
+           
             </div>
 
 
@@ -120,6 +120,28 @@
                 class="flex justify-center gap-3 mt-8">
 
             </div>
+            <!-- Modal wkda -->
+<div id="modal"
+     class="hidden fixed inset-0 z-50 bg-black/70
+            flex items-center justify-center p-4">
+
+    <!-- Modal Content -->
+    <div class="bg-gray-900 text-white rounded-xl
+                max-w-2xl w-full p-6 relative">
+
+        <!-- Close Button -->
+        <button id="close-modal"
+                class="absolute top-3 right-3 text-2xl">
+            &times;
+        </button>
+
+        <!-- Movie Information -->
+        <div id="info-container">
+        </div>
+
+    </div>
+
+</div>
 
         </section>
 
@@ -154,5 +176,6 @@
     </main>
 <script type="module" src="js/store.js"></script>
 <script type="module" src="js/render.js"></script>
+<script type="module" src="js/modale.js>"></script>
 </body>
 </html>
