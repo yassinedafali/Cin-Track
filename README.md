@@ -1,30 +1,94 @@
-container.innerHTML += `
-    <div class="movie-card" data-id="${e.id}">
-        <img src="${e.image}" alt="${e.title}">
-        <h3>${e.title}</h3>
-    </div>
-`;
-container.innerHTML += `
-    <div class="bg-gray-900 movie-card"
-         data-id="${e.id}"
-         rounded-xl overflow-hidden shadow-lg">
+#  CinéTrack
 
-        <img
-            src="${e.image}"
-            alt="${e.title}"
-            class="w-full h-64 object-cover"
-        >
+**Réalisé par : Yassine Dafali**
 
-        <div class="p-4 text-white">
-            <h2 class="text-lg font-bold">${e.title}</h2>
+##  Présentation du projet
 
-            <p class="text-gray-400 mt-2">
-                ${e.releaseYear}
-            </p>
+CinéTrack est une application web qui permet aux utilisateurs de découvrir des films et des séries à partir d'une API.
 
-            <span class="inline-block mt-2 bg-red-600 px-3 py-1 rounded-lg text-sm">
-                ${e.type}
-            </span>
-        </div>
-    </div>
-`;
+L'objectif de ce projet est de pratiquer JavaScript, la manipulation du DOM et l'organisation du code avec les modules ES6.
+
+##  Fonctionnalités
+
+- Afficher les films et les séries sous forme de cards.
+- Rechercher un film ou une série par son titre.
+- Filtrer les contenus par type : Films ou Séries.
+- Naviguer entre les pages grâce à la pagination.
+- Afficher les détails d'un film ou d'une série dans une fenêtre Modal.
+- Ajouter et retirer des titres des favoris.
+- Sauvegarder les favoris dans le LocalStorage.
+- Retrouver les favoris après le rechargement de la page.
+
+##  Technologies utilisées
+
+- HTML5
+- Tailwind CSS
+- JavaScript (ES6)
+- Fetch API
+- Async / Await
+- LocalStorage
+- Modules JavaScript (Import / Export)
+
+##  Organisation du projet
+
+```text
+CinéTrack/
+│
+├── index.html
+│
+├── img/
+│
+├── js/
+│   ├── store.js
+│   ├── render.js
+│   ├── filter.js
+│   ├── Favorites.js
+│   ├── modale.js
+│   └── main.js
+│
+└── README.md
+```
+
+##  API utilisée
+
+Les données des films et des séries sont récupérées depuis cette API :
+
+[ CinetTrack API - GitHub ](https://raw.githubusercontent.com/ouchad97/cinetrack-api/main/cinetrack-data.json)
+
+J'utilise `fetch()` avec `async/await` pour récupérer les données et `try/catch` pour gérer les erreurs.
+
+##  Installation et lancement
+
+1. Cloner le projet :
+
+```bash
+git clone URL_DU_DEPOT
+```
+
+2. Entrer dans le dossier :
+
+```bash
+cd CinéTrack
+```
+
+3. Ouvrir le projet avec VS Code.
+
+4. Lancer `index.html` avec l'extension **Live Server**.
+
+##  Objectif pédagogique
+
+Ce projet m'a permis de pratiquer plusieurs notions JavaScript :
+
+- La manipulation du DOM.
+- Les événements avec `addEventListener`.
+- Les méthodes `map()`, `filter()`, `find()` et `reduce()`.
+- Les fonctions asynchrones.
+- La gestion des données avec LocalStorage.
+- L'organisation du code en plusieurs modules.
+- La gestion des événements avec `stopPropagation()`.
+
+##  Auteur
+
+**Yassine Dafali**
+
+Projet réalisé dans le cadre de ma formation à YouCode.
