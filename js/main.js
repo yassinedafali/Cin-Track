@@ -50,8 +50,6 @@ if (!data.length) {
 
         const isActive = active.classList.contains("text-green-700");
 
-        favoritesContainer.classList.toggle("hidden", !isActive);
-
         document.querySelectorAll(".favorite-btn").forEach(btn => {
             btn.classList.toggle("hidden", !isActive);
         });
