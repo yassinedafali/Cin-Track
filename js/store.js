@@ -1,18 +1,19 @@
 
- const url = "https://raw.githubusercontent.com/ouchad97/cinetrack-api/main/cinetrack-data.json";
+const url = "https://raw.githubusercontent.com/ouchad97/cinetrack-api/main/cinetrack-data.json";
 
- export async function getData() {
+export async function getData() {
     try {
         const response = await fetch(url);
 
-        const data = await response.json();  
+        if (!response.ok) {
+            throw new Error("Erreur lors du chargement des données");
+        }
+
+        const data = await response.json();
         return data;
-        
+
     } catch (error) {
         console.log("Erreur :", error);
+        return [];
     }
 }
-
-
-
-getData();

@@ -1,28 +1,34 @@
-import { getData } from "./store.js";
 
-let data = await getData();
-import { renderfilm } from "./render.js";
+export function initFilter(data, onResults) {
 
-const search=document.getElementById("search-film")
- const filter=document.getElementById("filter-status")
- const clear=document.getElementById("clear-btn")
+    const search = document.getElementById("search-film");
+    const filter = document.getElementById("filter-status");
+    const clear = document.getElementById("clear-btn");
 
+    function searchAndFilter() {
 
-search.addEventListener("input", () => {
+        let recherche = search.value.trim().toLowerCase();
+        let valeur = filter.value;
 
-    let recherche = search.value.trim().toLowerCase();
-    let valeur = filter.value;
-    let resultats = data.filter(trip => {
-        console.log(trip.title.trim() + " => " +recherche )
-        return trip.title.trim().toLowerCase().includes(recherche) && (valeur === "all" || valeur === trip.type) ;
+        let resultats = data.filter(film => {
+
+            return film.title.trim().toLowerCase().includes(recherche)
+                && (valeur === "all" || valeur === film.type);
+
+        });
+
+        onResults(resultats);
+    }
+
+    search.addEventListener("input", searchAndFilter);
+
+    filter.addEventListener("change", searchAndFilter);
+
+    clear.addEventListener("click", () => {
+
+        search.value = "";
+        filter.value = "all";
+
+        searchAndFilter();
     });
-
-    renderfilm(resultats)
-});
-
-clear.addEventListener("click",()=>{
-    search.value="";
-    filter.value="all"
 }
-
-)

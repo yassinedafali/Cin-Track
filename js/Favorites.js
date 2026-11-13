@@ -1,36 +1,28 @@
 
-const fav = document.getElementById("9alb");
-const container=document.getElementById("movies-container")
-     export function activebtn(){
-const active =document.getElementById("active")
-active.addEventListener("click",(e)=>{
-  e.preventDefault()
-  active.classList.toggle("text-green-700");
-    active.classList.toggle("text-red-700");
-
-});
-return active
-}
-fav.addEventListener("click",(e)=>{
-e.stopPropagation();
-    fav.classList.toggle("text-red-700")
-    fav.classList.toggle("text-white")
-})
-
 let favoris = JSON.parse(localStorage.getItem("favoris")) || [];
 
+// Ajouter ou supprimer un film
+export function toggleFavorite(id) {
 
+    id = String(id);
 
+    if (favoris.includes(id)) {
+        favoris = favoris.filter(f => f !== id);
+    } else {
+        favoris.push(id);
+    }
 
+    localStorage.setItem("favoris", JSON.stringify(favoris));
 
+    return favoris;
+}
 
+// Récupérer les favoris
+export function getFavorites() {
+    return favoris;
+}
 
-
-
-
-
-
-
-
-
-localStorage.setItem("favoris", JSON.stringify(favoris));
+// Bouton Toggle
+export function activebtn() {
+    return document.getElementById("active");
+}
