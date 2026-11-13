@@ -1,6 +1,7 @@
 import { getData } from "./store.js";
 
 const data = await getData();
+const fav = document.getElementById("9alb");
 
 const container = document.getElementById("movies-container");
 const info = document.getElementById("info-container");
@@ -20,8 +21,18 @@ function closeModal() {
     modale.classList.add("hidden");
     modale.classList.remove("flex");
 }
-
 container.addEventListener("click", e => {
+   
+    const favBtn = e.target.closest("#fav");
+    console.log(favBtn)
+    if (favBtn) {
+        e.stopPropagation(); // 
+        favBtn.classList.toggle("text-red-700");
+        favBtn.classList.toggle("text-white");
+        return; // 
+    }
+
+  
     const card = e.target.closest(".movie-card");
     if (!card) return;
 

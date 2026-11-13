@@ -7,51 +7,74 @@ let container = document.getElementById("movies-container");
 let defaultPage = 1;
 let defaultSize = 8;
 
+import { activebtn } from "./Favorites.js";
 
 
+const active = activebtn();
+let isActive = false;
 
-export function renderfilm(filmData = data, page = defaultPage, size = defaultSize) {
-  if (!filmData) return;
+active.addEventListener("click", () => {
 
-  container.innerHTML = "";
+    isActive = active.classList.contains("text-green-700");
 
-  let startIndex = (page - 1) * size;
-  let endIndex = startIndex + size;
+    console.log(isActive);
 
-  let datas = filmData.slice(startIndex, endIndex);
+    renderfilm();
+});
 
-for (let i = 0; i < datas.length; i++) {
+export function renderfilm(
+    filmData = data,
+    page = defaultPage,
+    size = defaultSize
+) {
+    if (!filmData) return;
 
-    container.innerHTML += `
-        <div class="bg-gray-900 movie-card rounded-xl overflow-hidden shadow-lg"
-             data-id="${datas[i].id}">
+    container.innerHTML = "";
 
-            <img
-                src="${datas[i].image}"
-                alt="${datas[i].title}"
-                class="w-full h-64 object-cover"
-            >
+    let startIndex = (page - 1) * size;
+    let endIndex = startIndex + size;
 
-            <div class="p-4 text-white">
+    let datas = filmData.slice(startIndex, endIndex);
 
-                <h2 class="text-lg font-bold">
-                    ${datas[i].title}
-                </h2>
+    for (let i = 0; i < datas.length; i++) {
 
-                <p class="text-gray-400 mt-2">
-                    ${datas[i].releaseYear}
-                </p>
+        let heart = isActive
+            ? `<i class="fa-solid fa-heart text-white"
+            id="fav"></i>`
+            : "";
 
-                <span class="inline-block mt-2 bg-red-600 px-3 py-1 rounded-lg text-sm">
-                    ${datas[i].type}
-                </span>
+        container.innerHTML += `
+            <div class="bg-gray-900 movie-card rounded-xl overflow-hidden shadow-lg"
+                 data-id="${datas[i].id}">
 
+                <div class="relative">
+                  <button class="absolute r-2 t-2 rounded-full bg-black/50 p-2" >${heart}</button>
+                <img src="${datas[i].image}"
+                     alt="${datas[i].title}"
+                     class="w-full h-64 object-cover">
+                    </div>
+
+                <div class="p-4 text-white">
+                    <h2 class="text-lg font-bold">
+                        ${datas[i].title}
+                    </h2>
+
+                    <p class="text-gray-400 mt-2">
+                        ${datas[i].releaseYear}
+                    </p>
+
+                    <span class="inline-block mt-2 bg-red-600 px-3 py-1 rounded-lg text-sm mb-2">
+                        ${datas[i].type}
+                    </span>
+
+                </div>
             </div>
-        </div>
-    `;
+        `;
+    }
+
+    renderPaginationButtons(filmData, page, size);
 }
-  renderPaginationButtons(filmData, page, size);
-}
+
 
 export function renderPaginationButtons(filmData, currentPage, pageSize = defaultSize) {
   let Cbtn = document.getElementById("pagination");

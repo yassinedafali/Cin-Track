@@ -68,6 +68,8 @@
                 <option value="movie">Films</option>
                 <option value="series">Séries</option>
             </select>
+           
+
         </div>
 
         <div>
@@ -76,6 +78,7 @@
                 <i class="fa-solid fa-filter mr-2"></i>
                 Clear
             </button>
+           
         </div>
     </div>
 
@@ -109,22 +112,26 @@
         <!-- RIGHT SIDE: FAVORITES -->
         <aside class="bg-gray-950 border-l border-gray-200 p-4">
 
-            <!-- Favorites Header -->
-            <div class="flex items-center justify-between mb-6">
+           <div class="flex items-center justify-between mb-6">
 
-                <h2 class="text-xl font-bold text-white">
-                    Favorites
-                </h2>
+    <h2 class="text-xl font-bold text-white">
+        Favorites
+    </h2>
 
-                <i class="fa-solid fa-heart text-white text-xl"></i>
+    <i class="fa-solid fa-heart text-2xl"
+       style="color: rgb(240, 223, 223);"
+       id="9alb"></i>
 
-            </div>
+    <i class="fa-solid fa-toggle-on text-red-700 text-2xl"
+    id="active"></i>
 
+</div>
 
             <!-- Favorites List -->
             <div
                 id="favorites-container"
                 class="flex flex-col gap-4">
+            
 
                 <!-- Favorites generated with JavaScript -->
 
@@ -137,5 +144,6 @@
 <script type="module" src="js/render.js"></script>
 <script type ="module" src="js/modale.js"></script>
 <script type ="module" src="js/filter.js"></script>
+<script type="module" src="js/Favorites.js"></script>
 </body>
 </html>
